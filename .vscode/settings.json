@@ -1,0 +1,7 @@
+{
+        "editor.autoIndent": "keep",
+        "html.format.indentInnerHtml": true,
+        "eslint.alwaysShowStatus": true,
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+}
