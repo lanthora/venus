@@ -8,7 +8,7 @@ import Process from './components/Process'
 import File from './components/File'
 import Net from './components/Net'
 import Extension from './components/Extension'
-
+import LoginDialog from './components/LoginDialog'
 
 function fillTabProps(group, index) {
   return {
@@ -35,6 +35,8 @@ function App() {
 
   return (
     <Box sx={{ width: '100%' }}>
+
+      <LoginDialog />
 
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
