@@ -1,47 +1,72 @@
-import * as React from 'react';
+import React from 'react';
+import axios from 'axios';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function LoginDialog() {
-  const [open, setOpen] = React.useState(false);
+  // TODO: 后端任何一个接口返回 401 的时候显示登录框.
+  const [loginDialog, setLoginDialog] = React.useState(false);
+  const [loginFailedAlert, setLoginFailedAlert] = React.useState(false);
+  const username = React.useRef(null);
+  const password = React.useRef(null);
 
   React.useEffect(() => {
-    // 检查是否成功登录,未登录的话显示对话框
-    setOpen(true);
+    axios.post('/user/alive', {
+    }).catch(function (error) {
+      if (error.response)
+        setLoginDialog(true);
+    });
   }, []);
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleSubmit = () => {
+    axios.post('/user/login', {
+      "username": username.current.value,
+      "password": password.current.value,
+    }).then(function (response) {
+      if (response.status === 200)
+        setLoginDialog(false);
+    }).catch(function (error) {
+      setLoginFailedAlert(true);
+    });
+  };
+
+  const handleCancel = () => {
+    setLoginFailedAlert(true);
+  };
+
+  const closeAlert = () => {
+    setLoginFailedAlert(false);
   };
 
   return (
-    <Dialog open={open}>
-      <DialogTitle>登录</DialogTitle>
-      <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="username"
-          label="用户名"
-          fullWidth
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="password"
-          label="密码"
-          fullWidth
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>取消</Button>
-        <Button onClick={handleClose}>确认</Button>
-      </DialogActions>
-    </Dialog>
+    <span>
+      <Dialog open={loginDialog}>
+        <DialogTitle>登录</DialogTitle>
+        <DialogContent>
+          <TextField margin="dense" id="username" label="用户名" inputRef={username} fullWidth />
+          <TextField margin="dense" id="password" label="密码" type="password" inputRef={password} fullWidth />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCancel}>取消</Button>
+          <Button onClick={handleSubmit}>确认</Button>
+        </DialogActions>
+      </Dialog>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={loginFailedAlert}
+        autoHideDuration={3000}
+        onClose={closeAlert}>
+        <Alert onClose={closeAlert} severity="error">
+          登录失败
+        </Alert>
+      </Snackbar>
+    </span>
   );
 }
 
