@@ -20,8 +20,8 @@ function LoginDialog() {
       "username": username.current.value,
       "password": password.current.value,
     }).then(function (response) {
-      if (response.status === 200)
-        history.replace("/overview")
+      if (response.data.status === 0)
+        history.back()
     })
   }
 

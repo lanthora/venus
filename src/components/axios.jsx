@@ -1,18 +1,16 @@
-import {create} from 'axios'
+import { create } from 'axios'
 import history from './history'
 
 const axios = create()
 
 axios.interceptors.response.use(
   response => {
+    if (response.data.status === 2)
+      history.push("/login")
+
     return response
   }, error => {
-    if (error.response.status === 401)
-      history.replace("/login")
-
-    if (error.response.status === 404)
-      history.replace("/login")
-
+    console.log(error)
     return Promise.reject(error)
   })
 

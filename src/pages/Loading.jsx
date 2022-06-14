@@ -6,7 +6,8 @@ function Loading(props) {
   React.useEffect(() => {
     axios.post('/user/alive', {
     }).then(function (response) {
-      history.replace('/overview')
+      if (response.data.status === 0)
+        history.push("/overview")
     })
   })
 
