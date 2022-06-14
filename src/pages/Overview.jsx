@@ -1,4 +1,4 @@
-function BaseInfo(props) {
+function Overview(props) {
   return (
     <pre> {`
       BaseInfo.js
@@ -22,4 +22,4 @@ function BaseInfo(props) {
   )
 }
 
-export default BaseInfo;
+export default Overview;
