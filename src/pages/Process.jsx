@@ -20,4 +20,4 @@ function Process(props) {
   )
 }
 
-export default Process;
+export default Process

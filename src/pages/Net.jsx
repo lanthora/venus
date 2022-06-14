@@ -17,4 +17,4 @@ function Net(props) {
   )
 }
 
-export default Net;
+export default Net

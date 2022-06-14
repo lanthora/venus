@@ -9,4 +9,4 @@ function Extension(props) {
   )
 }
 
-export default Extension;
+export default Extension

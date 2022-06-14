@@ -18,4 +18,4 @@ function File(props) {
   )
 }
 
-export default File;
+export default File
