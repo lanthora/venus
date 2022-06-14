@@ -1,5 +1,5 @@
 import React from 'react'
-import Axios from "../components/Axios"
+import axios from "../components/axios"
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
-import History from '../components/History'
+import history from '../components/history'
 
 function LoginDialog() {
   const [loginFailedAlert, setLoginFailedAlert] = React.useState(false)
@@ -16,12 +16,12 @@ function LoginDialog() {
   const password = React.useRef(null)
 
   const handleSubmit = () => {
-    Axios.post('/user/login', {
+    axios.post('/user/login', {
       "username": username.current.value,
       "password": password.current.value,
     }).then(function (response) {
       if (response.status === 200)
-        History.replace("/overview")
+        history.replace("/overview")
     })
   }
 

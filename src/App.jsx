@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import History from './components/History'
+import history from './components/history'
 import HistoryRouter from './components/HistoryRouter'
 import Overview from './pages/Overview'
 import Process from './pages/Process'
@@ -12,7 +12,7 @@ import Loading from './pages/Loading'
 
 function App() {
   return (
-    <HistoryRouter history={History}>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path='overview' element={<Overview />} />
         <Route path='process' element={<Process />} />

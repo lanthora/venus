@@ -1,12 +1,12 @@
 import React from 'react'
-import Axios from "../components/Axios"
-import History from '../components/History'
+import axios from "../components/axios"
+import history from '../components/history'
 
 function Loading(props) {
   React.useEffect(() => {
-    Axios.post('/user/alive', {
+    axios.post('/user/alive', {
     }).then(function (response) {
-      History.replace('/overview')
+      history.replace('/overview')
     })
   })
 
