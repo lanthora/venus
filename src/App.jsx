@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import history from './components/history'
 import HistoryRouter from './components/HistoryRouter'
-import Navbar from "./components/Navbar"
+import NavigationBar from './components/NavigationBar'
 import Overview from './pages/Overview'
 import Process from './pages/Process'
 import File from './pages/File'
@@ -14,7 +14,7 @@ import Loading from './pages/Loading'
 function App() {
   return (
     <HistoryRouter history={history}>
-      <Navbar />
+      <NavigationBar />
       <Routes>
         <Route path='overview' element={<Overview />} />
         <Route path='process' element={<Process />} />
