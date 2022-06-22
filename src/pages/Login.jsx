@@ -22,6 +22,8 @@ function LoginDialog() {
     }).then(function (response) {
       if (response.data.status === 0)
         history.back()
+      else
+        setLoginFailedAlert(true)
     })
   }
 
