@@ -12,6 +12,8 @@ import MenuItem from '@mui/material/MenuItem';
 import SecurityIcon from '@mui/icons-material/Security';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import history from './history'
+import axios from "./axios"
+
 const pages = [
   { 'title': '概览', 'route': '/overview' },
   { 'title': '进程', 'route': '/process' },
@@ -19,7 +21,6 @@ const pages = [
   { 'title': '文件', 'route': '/file' },
   { 'title': '扩展', 'route': '/extension' },
 ];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavigationBar = () => {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -103,11 +104,16 @@ const NavigationBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key='logout' onClick={() => {
+                handleCloseUserMenu()
+                axios.post('/user/logout', {
+                }).then(function (response) {
+                  if (response.data.status === 0)
+                    history.replace('/login')
+                })
+              }}>
+                <Typography textAlign="center">登出</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
