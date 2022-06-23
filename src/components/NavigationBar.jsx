@@ -100,7 +100,7 @@ function NavigationBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key='logout' onClick={() => {
+              <MenuItem key='user' onClick={() => {
                 handleCloseUserMenu()
                 history.replace('/user')
               }}>
@@ -109,7 +109,6 @@ function NavigationBar() {
 
               <MenuItem key='logout' onClick={() => {
                 handleCloseUserMenu()
-                history.replace('/loading')
                 axios.post('/user/logout', {
                 }).then(function (response) {
                   if (response.data.status === 0)

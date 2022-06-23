@@ -21,7 +21,7 @@ function LoginDialog() {
       "password": password.current.value,
     }).then(function (response) {
       if (response.data.status === 0)
-        history.back()
+        history.replace('/overview')
       else
         setLoginFailedAlert(true)
     })
