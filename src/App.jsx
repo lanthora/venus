@@ -10,6 +10,7 @@ import Net from './pages/Net'
 import Extension from './pages/Extension'
 import Login from './pages/Login'
 import Loading from './pages/Loading'
+import User from './pages/User'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='file' element={<File />} />
         <Route path='net' element={<Net />} />
         <Route path='extension' element={<Extension />} />
+        <Route path='user' element={<User />} />
         <Route path='login' element={<Login />} />
         <Route path='*' element={<Loading />} />
       </Routes>

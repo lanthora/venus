@@ -1,16 +1,15 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import SecurityIcon from '@mui/icons-material/Security';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
+import Container from '@mui/material/Container'
+import Button from '@mui/material/Button'
+import MenuItem from '@mui/material/MenuItem'
+import SecurityIcon from '@mui/icons-material/Security'
+import AccountCircle from '@mui/icons-material/AccountCircle'
 import history from './history'
 import axios from "./axios"
 
@@ -22,17 +21,17 @@ const pages = [
   { 'title': '扩展', 'route': '/extension' },
 ];
 
-const NavigationBar = () => {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+function NavigationBar() {
+  const [anchorElUser, setAnchorElUser] = React.useState(null)
 
 
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorElUser(event.currentTarget)
   };
 
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser(null)
   };
 
   return (
@@ -74,20 +73,17 @@ const NavigationBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenUserMenu}
-                color="inherit"
-                sx={{ p: 0 }}
-              >
-                <AccountCircle />
-              </IconButton>
-
-            </Tooltip>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenUserMenu}
+              color="inherit"
+              sx={{ p: 0 }}
+            >
+              <AccountCircle />
+            </IconButton>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -106,6 +102,14 @@ const NavigationBar = () => {
             >
               <MenuItem key='logout' onClick={() => {
                 handleCloseUserMenu()
+                history.replace('/user')
+              }}>
+                <Typography textAlign="center">用户</Typography>
+              </MenuItem>
+
+              <MenuItem key='logout' onClick={() => {
+                handleCloseUserMenu()
+                history.replace('/loading')
                 axios.post('/user/logout', {
                 }).then(function (response) {
                   if (response.data.status === 0)
@@ -120,5 +124,6 @@ const NavigationBar = () => {
       </Container>
     </AppBar>
   );
-};
-export default NavigationBar;
+}
+
+export default NavigationBar
