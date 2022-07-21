@@ -18,7 +18,6 @@ const pages = [
   { 'title': '进程', 'route': '/process' },
   { 'title': '网络', 'route': '/net' },
   { 'title': '文件', 'route': '/file' },
-  { 'title': '扩展', 'route': '/extension' },
 ];
 
 function NavigationBar() {
@@ -107,6 +106,12 @@ function NavigationBar() {
                 <Typography textAlign="center">用户</Typography>
               </MenuItem>
 
+              <MenuItem key='settings' onClick={() => {
+                handleCloseUserMenu()
+                history.replace('/settings')
+              }}>
+                <Typography textAlign="center">设置</Typography>
+              </MenuItem>
               <MenuItem key='logout' onClick={() => {
                 handleCloseUserMenu()
                 axios.post('/user/logout', {

@@ -5,7 +5,7 @@ const axios = create()
 
 axios.interceptors.response.use(
   response => {
-    if (response.data.status === 2)
+    if (response.data.status === 100)
       history.replace("/login")
 
     return response

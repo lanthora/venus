@@ -7,7 +7,7 @@ import Overview from './pages/Overview'
 import Process from './pages/Process'
 import File from './pages/File'
 import Net from './pages/Net'
-import Extension from './pages/Extension'
+import Settings from './pages/Settings'
 import Login from './pages/Login'
 import Loading from './pages/Loading'
 import User from './pages/User'
@@ -21,7 +21,7 @@ function App() {
         <Route path='process' element={<Process />} />
         <Route path='file' element={<File />} />
         <Route path='net' element={<Net />} />
-        <Route path='extension' element={<Extension />} />
+        <Route path='settings' element={<Settings />} />
         <Route path='user' element={<User />} />
         <Route path='login' element={<Login />} />
         <Route path='*' element={<Loading />} />
