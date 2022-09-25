@@ -16,7 +16,7 @@ function LoginDialog() {
   const password = React.useRef(null)
 
   const handleSubmit = () => {
-    axios.post('/user/login', {
+    axios.post('/auth/login', {
       "username": username.current.value,
       "password": password.current.value,
     }).then(function (response) {
