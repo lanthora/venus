@@ -7,7 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 
 function Loading(props) {
   React.useEffect(() => {
-    axios.post('/user/alive', {
+    axios.post('/auth/showCurrentUserInfo', {
     }).then(function (response) {
       if (response.data.status === 0)
         history.push("/overview")

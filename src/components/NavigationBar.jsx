@@ -114,7 +114,7 @@ function NavigationBar() {
               </MenuItem>
               <MenuItem key='logout' onClick={() => {
                 handleCloseUserMenu()
-                axios.post('/user/logout', {
+                axios.post('/auth/logout', {
                 }).then(function (response) {
                   if (response.data.status === 0)
                     history.replace('/login')
