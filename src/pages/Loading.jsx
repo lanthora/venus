@@ -1,9 +1,8 @@
-import React from 'react'
-import axios from "../components/axios"
-import history from '../components/history'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
-
+import axios from "components/axios"
+import history from 'components/history'
+import React from 'react'
 
 function Loading(props) {
   React.useEffect(() => {

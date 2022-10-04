@@ -1,5 +1,5 @@
-import { Router } from "react-router-dom"
 import React from 'react'
+import { Router } from "react-router-dom"
 
 function HistoryRouter({ history, ...props }) {
   const [state, setState] = React.useState({
