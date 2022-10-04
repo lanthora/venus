@@ -1,16 +1,16 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
 import history from 'components/history'
 import HistoryRouter from 'components/HistoryRouter'
 import NavigationBar from 'components/NavigationBar'
+import File from 'pages/File'
+import Loading from 'pages/Loading'
+import Login from 'pages/Login'
+import Net from 'pages/Net'
 import Overview from 'pages/Overview'
 import Process from 'pages/Process'
-import File from 'pages/File'
-import Net from 'pages/Net'
 import Settings from 'pages/Settings'
-import Login from 'pages/Login'
-import Loading from 'pages/Loading'
 import User from 'pages/User'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
