@@ -1,5 +1,4 @@
-import Box from '@mui/material/Box'
-import CircularProgress from '@mui/material/CircularProgress'
+import { Box, CircularProgress } from '@mui/material'
 import axios from "components/axios"
 import history from 'components/history'
 import React from 'react'

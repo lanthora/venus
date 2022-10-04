@@ -1,11 +1,4 @@
-import Alert from '@mui/material/Alert'
-import Button from '@mui/material/Button'
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogTitle from '@mui/material/DialogTitle'
-import Snackbar from '@mui/material/Snackbar'
-import TextField from '@mui/material/TextField'
+import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, Snackbar, TextField } from '@mui/material'
 import axios from "components/axios"
 import history from 'components/history'
 import React from 'react'
