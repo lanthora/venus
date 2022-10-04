@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from "../components/axios"
+import axios from "components/axios"
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import Snackbar from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
-import history from '../components/history'
+import history from 'components/history'
 
 function LoginDialog() {
   const [loginFailedAlert, setLoginFailedAlert] = React.useState(false)

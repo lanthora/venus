@@ -10,8 +10,8 @@ import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import SecurityIcon from '@mui/icons-material/Security'
 import AccountCircle from '@mui/icons-material/AccountCircle'
-import history from './history'
-import axios from "./axios"
+import history from 'components/history'
+import axios from "components/axios"
 
 const pages = [
   { 'title': '概览', 'route': '/overview' },

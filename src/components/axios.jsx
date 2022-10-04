@@ -1,5 +1,5 @@
 import { create } from 'axios'
-import history from './history'
+import history from 'components/history'
 
 const axios = create()
 
