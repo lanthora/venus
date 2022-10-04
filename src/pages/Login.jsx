@@ -30,7 +30,7 @@ function LoginDialog() {
 
   return (
     <span>
-      <Dialog open={true}>
+      <Dialog open={true} sx={{ display: { xs: 'none', md: 'inline' } }}>
         <DialogTitle>登录</DialogTitle>
         <DialogContent>
           <TextField margin="dense" id="username" label="用户名" inputRef={username} fullWidth />

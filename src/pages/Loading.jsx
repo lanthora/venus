@@ -21,7 +21,7 @@ function Loading(props) {
 
   return (
     <div style={center}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: { xs: 'none', md: 'inline' } }}>
         <CircularProgress />
       </Box>
     </div>
