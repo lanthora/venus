@@ -1,17 +1,10 @@
 import { AccountCircle, Security } from '@mui/icons-material'
-import { AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
+import { AppBar, Box, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
 import axios from "components/axios"
 import history from 'components/history'
 import React from 'react'
 
-const pages = [
-  { 'title': '概览', 'route': '/overview' },
-  { 'title': '进程', 'route': '/process' },
-  { 'title': '网络', 'route': '/net' },
-  { 'title': '文件', 'route': '/file' },
-];
-
-function NavigationBar() {
+function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState(null)
 
 
@@ -29,7 +22,7 @@ function NavigationBar() {
       <Container maxWidth="xg">
         <Toolbar disableGutters>
           <Security sx={{ display: 'flex', mr: 1 }} />
-          <Box>
+          <Box sx={{ flexGrow: 1 }}>
             <Typography
               variant="h6"
               noWrap
@@ -47,19 +40,6 @@ function NavigationBar() {
             >
               URANUS
             </Typography>
-          </Box>
-          <Box sx={{ flexGrow: 1, display: 'flex' }}>
-            {pages.map((page) => (
-              <Button
-                key={page.title}
-                onClick={() => {
-                  history.replace(page.route)
-                }}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page.title}
-              </Button>
-            ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -90,19 +70,6 @@ function NavigationBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem key='user' onClick={() => {
-                handleCloseUserMenu()
-                history.replace('/user')
-              }}>
-                <Typography textAlign="center">用户</Typography>
-              </MenuItem>
-
-              <MenuItem key='settings' onClick={() => {
-                handleCloseUserMenu()
-                history.replace('/settings')
-              }}>
-                <Typography textAlign="center">设置</Typography>
-              </MenuItem>
               <MenuItem key='logout' onClick={() => {
                 handleCloseUserMenu()
                 axios.post('/auth/logout', {
@@ -111,8 +78,9 @@ function NavigationBar() {
                     history.replace('/login')
                 })
               }}>
-                <Typography textAlign="center">登出</Typography>
+                <Typography textAlign="center">退出</Typography>
               </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>
@@ -121,4 +89,4 @@ function NavigationBar() {
   );
 }
 
-export default NavigationBar
+export default Header

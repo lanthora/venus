@@ -3,21 +3,24 @@ import axios from "components/axios"
 import history from 'components/history'
 import React from 'react'
 
-function LoginDialog() {
+export default function LoginDialog() {
   const [loginFailedAlert, setLoginFailedAlert] = React.useState(false)
   const username = React.useRef(null)
   const password = React.useRef(null)
 
   const handleSubmit = () => {
-    axios.post('/auth/login', {
-      "username": username.current.value,
-      "password": password.current.value,
-    }).then(function (response) {
-      if (response.data.status === 0)
-        history.replace('/overview')
-      else
+    async function UserLogin() {
+      const result = await axios.post('/auth/login', {
+        "username": username.current.value,
+        "password": password.current.value,
+      });
+      if (result.data.status === 0) {
+        history.replace('/app')
+      } else {
         setLoginFailedAlert(true)
-    })
+      }
+    }
+    UserLogin()
   }
 
   const handleCancel = () => {
@@ -29,8 +32,8 @@ function LoginDialog() {
   }
 
   return (
-    <span>
-      <Dialog open={true} sx={{ display: { xs: 'none', md: 'inline' } }}>
+    <div>
+      <Dialog open={true}>
         <DialogTitle>登录</DialogTitle>
         <DialogContent>
           <TextField margin="dense" id="username" label="用户名" inputRef={username} fullWidth />
@@ -50,8 +53,6 @@ function LoginDialog() {
           登录失败
         </Alert>
       </Snackbar>
-    </span>
+    </div>
   )
 }
-
-export default LoginDialog

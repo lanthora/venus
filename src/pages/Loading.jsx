@@ -3,14 +3,17 @@ import axios from "components/axios"
 import history from 'components/history'
 import React from 'react'
 
-function Loading(props) {
+export default function Loading() {
   React.useEffect(() => {
     axios.post('/auth/showCurrentUserInfo', {
     }).then(function (response) {
-      if (response.data.status === 0)
-        history.push("/overview")
+      if (response.data.status === 0) {
+        history.push("/app")
+      } else {
+        history.push("/login")
+      }
     })
-  })
+  }, [])
 
   const center = {
     position: "absolute",
@@ -21,11 +24,9 @@ function Loading(props) {
 
   return (
     <div style={center}>
-      <Box sx={{ display: { xs: 'none', md: 'inline' } }}>
+      <Box>
         <CircularProgress />
       </Box>
     </div>
   )
 }
-
-export default Loading

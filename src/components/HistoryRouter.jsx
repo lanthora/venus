@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router } from "react-router-dom"
 
-function HistoryRouter({ history, ...props }) {
+export default function HistoryRouter({ history, ...props }) {
   const [state, setState] = React.useState({
     action: history.action,
     location: history.location
@@ -18,5 +18,3 @@ function HistoryRouter({ history, ...props }) {
     />
   )
 }
-
-export default HistoryRouter
