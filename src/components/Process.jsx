@@ -10,9 +10,6 @@ export default function Process() {
     unreadEventCount: '',
   })
 
-  const [workMode, setWorkMode] = React.useState('')
-  const [defaultEventStatus, setDefaultEventStatus] = React.useState('')
-
   React.useEffect(() => {
     async function fetchModuleStatus() {
       const result = await axios.post('/process/showModuleStatus');
@@ -38,7 +35,13 @@ export default function Process() {
         })
       }
     }
+    fetchModuleStatus();
+  }, []);
 
+
+  const [workMode, setWorkMode] = React.useState('')
+
+  React.useEffect(() => {
     async function fetchWorkMode() {
       const result = await axios.post('/process/showWorkMode');
       if (result.data.status === 0) {
@@ -54,6 +57,13 @@ export default function Process() {
       }
     }
 
+    fetchWorkMode()
+  }, [])
+
+
+  const [defaultEventStatus, setDefaultEventStatus] = React.useState('')
+
+  React.useEffect(() => {
     async function fetchDefaultEventStatus() {
       const result = await axios.post('/process/showDefaultEventStatus');
       if (result.data.status === 0) {
@@ -68,11 +78,9 @@ export default function Process() {
         setDefaultEventStatus('无权限')
       }
     }
-
-    fetchModuleStatus()
-    fetchWorkMode()
     fetchDefaultEventStatus()
   }, [])
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
