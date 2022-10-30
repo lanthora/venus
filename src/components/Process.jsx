@@ -161,7 +161,7 @@ export default function Process() {
           "offset": 0,
           "limit": 1000,
         });
-        if (result.data.status === 0) {
+        if (result.data.status === 0 && result.data.data != null) {
           setPocessEventList(result.data.data)
         }
       }
