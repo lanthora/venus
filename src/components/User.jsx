@@ -1,43 +1,40 @@
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, List, ListItem } from '@mui/material';
 import axios from "components/axios"
 import React from 'react'
 
 export default function User() {
 
-  const [userinfo, setUserinfo] = React.useState({
-    userID: '',
-    username: '',
-    aliasName: '',
-    permissions: '',
-  })
+  function UserInfo() {
+    const [userinfo, setUserinfo] = React.useState({
+      userID: '',
+      username: '',
+      aliasName: '',
+      permissions: '',
+    })
 
-  React.useEffect(() => {
-    async function fetchUserInfo() {
-      const result = await axios.post('/auth/showCurrentUserInfo');
-      if (result.data.status === 0) {
-        setUserinfo({
-          userID: result.data.data.userID,
-          username: result.data.data.username,
-          aliasName: result.data.data.aliasName,
-          permissions: result.data.data.permissions,
-        });
-      } else if (result.data.status === 101) {
-        setUserinfo({
-          userID: '无权限',
-          username: '无权限',
-          aliasName: '无权限',
-          permissions: '无权限',
-        });
+    React.useEffect(() => {
+      async function fetchUserInfo() {
+        const result = await axios.post('/auth/showCurrentUserInfo');
+        if (result.data.status === 0) {
+          setUserinfo({
+            userID: result.data.data.userID,
+            username: result.data.data.username,
+            aliasName: result.data.data.aliasName,
+            permissions: result.data.data.permissions,
+          });
+        } else if (result.data.status === 101) {
+          setUserinfo({
+            userID: '无权限',
+            username: '无权限',
+            aliasName: '无权限',
+            permissions: '无权限',
+          });
+        }
       }
-    }
-    fetchUserInfo()
-  }, [])
+      fetchUserInfo()
+    }, [])
 
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-
-      <Typography>用户信息</Typography>
-
+    return (
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Typography>用户ID: {userinfo.userID}</Typography>
@@ -55,7 +52,21 @@ export default function User() {
           <Typography>权限: {userinfo.permissions}</Typography>
         </Grid>
       </Grid>
+    )
+  }
 
+
+
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <Typography>
+        <Box sx={{ fontWeight: 'bold', m: 1, fontStyle: 'italic' }}>用户信息</Box>
+      </Typography>
+      <List>
+        <ListItem>
+          <UserInfo />
+        </ListItem>
+      </List>
     </Box >
   )
 }
