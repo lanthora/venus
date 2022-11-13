@@ -118,38 +118,39 @@ export default function Process() {
         headerName: 'ID',
         minWidth: 30,
       },
-
+      {
+        field: 'argv',
+        headerName: '参数列表',
+        minWidth: 256,
+        flex: 60,
+      },
       {
         field: 'binary',
         headerName: '可执行程序',
-        minWidth: 256,
+        minWidth: 128,
+        flex: 25,
       },
       {
         field: 'workdir',
         headerName: '工作目录',
-        minWidth: 256,
+        minWidth: 128,
+        flex: 15,
       },
 
       {
         field: 'count',
         headerName: '执行次数',
-        minWidth: 30,
+        minWidth: 32,
       },
       {
         field: 'judge',
         headerName: '执行方式',
-        minWidth: 30,
+        minWidth: 32,
       },
       {
         field: 'status',
         headerName: '策略状态',
-        minWidth: 30,
-      },
-      {
-        field: 'argv',
-        headerName: '参数列表',
-        minWidth: 256,
-        flex: 1,
+        minWidth: 32,
       },
     ];
 
