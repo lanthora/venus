@@ -131,7 +131,7 @@ export default function Net() {
         <DataGrid
           rows={processEventList}
           columns={columns}
-          pageSize={100}
+          pageSize={10}
           rowsPerPageOptions={[10]}
           disableSelectionOnClick
         />
