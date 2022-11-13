@@ -55,8 +55,6 @@ export default function User() {
     )
   }
 
-
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Typography>

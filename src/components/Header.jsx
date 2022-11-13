@@ -7,11 +7,9 @@ import React from 'react'
 function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState(null)
 
-
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   };
-
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
