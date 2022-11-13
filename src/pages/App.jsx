@@ -20,7 +20,7 @@ export default function App() {
         <ListItem divider>
           <File />
         </ListItem >
-        <ListItem divider>
+        <ListItem>
           <Net />
         </ListItem>
       </List>

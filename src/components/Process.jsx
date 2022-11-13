@@ -112,12 +112,12 @@ export default function Process() {
     )
   }
 
-  function PocessEventList() {
+  function EventList() {
     const columns = [
       {
         field: 'id',
         headerName: 'ID',
-        minWidth: 30,
+        minWidth: 128,
       },
       {
         field: 'argv',
@@ -141,17 +141,17 @@ export default function Process() {
       {
         field: 'count',
         headerName: '执行次数',
-        minWidth: 32,
+        minWidth: 128,
       },
       {
         field: 'judge',
         headerName: '执行方式',
-        minWidth: 32,
+        minWidth: 128,
       },
       {
         field: 'status',
         headerName: '策略状态',
-        minWidth: 32,
+        minWidth: 128,
       },
     ];
 
@@ -159,9 +159,10 @@ export default function Process() {
 
     React.useEffect(() => {
       async function fetchPocessEventList() {
+        // TODO: 一次取出 100 万条数据,应该能满足绝大多数场景.未来需要实现成根据情况加载
         const result = await axios.post('/process/listEvents', {
           "offset": 0,
-          "limit": 1000,
+          "limit": 1000000,
         });
         if (result.data.status === 0 && result.data.data != null) {
           setPocessEventList(result.data.data)
@@ -175,9 +176,8 @@ export default function Process() {
         <DataGrid
           rows={processEventList}
           columns={columns}
-          pageSize={10}
+          pageSize={100}
           rowsPerPageOptions={[10]}
-          checkboxSelection
           disableSelectionOnClick
         />
       </Box>
@@ -191,14 +191,14 @@ export default function Process() {
       </Typography>
 
       <List>
-        <ListItem divider>
+        <ListItem>
           <ModuleStatus />
         </ListItem>
-        <ListItem divider>
+        <ListItem>
           <WorkModule />
         </ListItem>
         <ListItem>
-          <PocessEventList />
+          <EventList />
         </ListItem >
       </List>
     </Box>
